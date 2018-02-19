@@ -20,9 +20,9 @@ struct H_Connect;
 struct H_Read;
 
 namespace {
-typedef lcb_io_opt_st _IOPS;
-typedef lcb_ioE_callback _ECB;
-typedef lcb_sockdata_st _SD;
+using _IOPS = lcb_io_opt_st;
+using _ECB = lcb_ioE_callback;
+using _SD = lcb_sockdata_st;
 }
 
 class BoostIOPS : _IOPS {

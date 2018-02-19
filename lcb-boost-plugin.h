@@ -9,8 +9,8 @@ public:
     size_t get_num_segs() { return niov; }
     std::vector<lcb_IOV *> get_vector();
 
-    typedef lcb_IOV* const_iterator;
-    typedef lcb_IOV value_type;
+    using const_iterator = lcb_IOV*;
+    using value_type = lcb_IOV;
 
     const_iterator begin() { return iov; }
     const_iterator end() { return iov + niov; }
@@ -23,14 +23,14 @@ private:
 /**
  * Implementation must support run(), stop()
  */
-template <typename Implementation>
+template <class Implementation>
 class CompletionRoutines {
-    typedef lcb_io_connect_cb ConnectedHandler;
-    typedef lcb_ioC_write2_callback WriteHandler;
-    typedef lcb_ioC_read2_callback ReadHandler;
-    typedef lcb_sockdata_st SD;
-    typedef typename Implementation::socket_type socktype_;
-    typedef typename Implementation::timer_type timer_;
+    using ConnectedHandler = lcb_io_connect_cb;
+    using WriteHandler = lcb_ioC_write2_callback;
+    using ReadHandler = lcb_ioC_read2_callback;
+    using SD = lcb_sockdata_st;
+    using socktype_ = typename Implementation::socket_type;
+    using timer_ = typename Implementation::timer_type;
     struct ConnectContext { ConnectedHandler handler; };
     struct ReadContext { ReadHandler handler; void *arg; };
     struct WriteContext { WriteHandler handler; void *arg; };
